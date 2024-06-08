@@ -1,0 +1,31 @@
+{
+    "Home": {
+      "login": "登录",
+      "register": "注册"
+    },
+    "Login": {
+      "welcome": "欢迎回来！",
+      "glad": "很高兴再次见到你！",
+      "enter_email": "请输入您的电子邮件",
+      "enter_password": "请输入您的密码"
+    },
+    "Register": {
+      "hello": "你好！注册开始",
+      "email": "电子邮件",
+      "password": "密码",
+      "confirm_password": "确认密码",
+      "choose_language": "选择您的语言"
+    },
+    "Chat": {
+      "map": "地图",
+      "bookmark": "书签",
+      "logout": "登出",
+      "recommend":"推荐",
+      "user":"欢迎回来, "
+
+    },
+    "Map":{
+      "thumbnail":"查看缩略图"
+     }
+  }
+  

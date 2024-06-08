@@ -1,0 +1,32 @@
+{
+  "Home":{
+    "login":"로그인",
+    "register":"회원가입"
+  },
+  "Login":{
+    "welcome": "환영합니다!",
+    "glad":"다시 만나서 반가워요!",
+    "enter_email":"이메일을 입력해주세요",
+    "enter_password":"비밀번호를 입력해주세요"
+  },
+  "Register":{
+    "hello":"안녕하세요! 시작하려면 회원가입을 해주세요",
+    "email":"이메일",
+    "password":"비밀번호",
+    "confirm_password":"비밀번호 확인",
+    "choose_language":"언어를 선택해주세요"
+   },
+   "Chat":{
+    "map":"지도",
+    "bookmark":"북마크",
+    "logout":"로그아웃",
+    "recommend":"추천",
+    "user":"환영합니다, "
+
+   },
+   "Map":{
+    "thumbnail":"썸네일 보기"
+   }
+    
+
+  }

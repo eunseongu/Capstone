@@ -1,0 +1,30 @@
+{
+    "Home": {
+      "login": "ログイン",
+      "register": "登録"
+    },
+    "Login": {
+      "welcome": "お帰りなさい！",
+      "glad": "またお会いできて嬉しいです！",
+      "enter_email": "メールアドレスを入力してください",
+      "enter_password": "パスワードを入力してください"
+    },
+    "Register": {
+      "hello": "こんにちは！始めるには登録してください",
+      "email": "メール",
+      "password": "パスワード",
+      "confirm_password": "パスワードの確認",
+      "choose_language": "言語を選択してください"
+    },
+    "Chat": {
+      "map": "地図",
+      "bookmark": "ブックマーク",
+      "logout": "ログアウト",
+      "recommend":"おすすめ",
+      "user":"お帰りなさい, "
+    },
+    "Map":{
+      "thumbnail":"サムネイルを見る"
+     }
+  }
+  

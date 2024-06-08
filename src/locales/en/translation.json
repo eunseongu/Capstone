@@ -1,0 +1,29 @@
+{
+  "Home":{
+    "login":"Login",
+    "register":"Register"
+  },
+   "Login":{
+    "welcome": "Welcome back!",
+    "glad":"Glad to see you, Again!",
+    "enter_email":"Enter your email",
+    "enter_password":"Enter your password"
+   },
+   "Register":{
+    "hello":"Hello! Register to get started",
+    "email":"Email",
+    "password":"Password",
+    "confirm_password":"Confirm password",
+    "choose_language":"Choose your language"
+   },
+   "Chat":{
+    "map":"Map",
+    "bookmark":"Bookmark",
+    "logout":"Logout",
+    "recommend":"Recommend",
+    "user":"Welcome, "
+   },
+   "Map":{
+    "thumbnail":"View Thumbnail"
+   }
+  }

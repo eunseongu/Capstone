@@ -1,0 +1,138 @@
+.font {
+    font-family: 'Poppins';
+    font-style: normal;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+.main__container {
+    display: flex;
+    flex-direction: row;
+    height: 87vh;
+}
+
+header {
+    border-bottom: 1.5px solid #ccc;
+    background: linear-gradient(90deg, #FFFFFF 43%, #f74b4b 70%, #0059ab 90%);
+    width: 100vw;
+    height: 100px;
+}
+
+.recommend {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.recommend__container {
+    height: 90%;
+    width: 90%;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+}
+
+.recommend__button-container {
+    width: 350px;
+    height: 43px;
+    display: inline-block;
+    text-align: center;
+    font-weight: 400;
+    background: black;
+    border-radius: 10px;
+}
+
+.chat {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.header__text-box {
+    display: inline-block;
+    text-align: center;
+    margin: 0px 0 0px 95px;
+}
+
+.header__k-rebot {
+    font-weight: bold;
+    font-size: 35px;
+    line-height: 100%;
+    color: black;
+}
+
+.header__text-box02 {
+    display: inline-block;
+    text-align: center;
+    margin: 0px 0 0 5%;
+}
+
+.header__text-box03 {
+    display: inline-block;
+    text-align: center;
+    margin: 0px 0 0 61%;
+}
+
+.header__logout {
+    font-size: 14px;
+    color: white;
+    font-weight: 500;
+}
+
+.recommend__map-button {
+    background-color: transparent;
+    border: none;
+    margin:10px;
+    padding: 0 10px;
+    cursor: pointer;
+    position: relative;
+    color: white;
+    font-size: 14px;
+}
+
+.recommend__recommend-button {
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding: 0 5px;
+    position: relative;
+    color: white;
+    font-size: 14px;
+}
+
+.recommend__reload-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 14px;
+    height: 14px;
+    background-image: url('./../img/refresh-arrow.png');
+    background-size: cover;
+    background-position: center;
+    outline: none;
+
+}
+
+.recommend__map-button::after {
+    content: "|";
+    position: absolute;
+    right: -5px;
+}
+
