@@ -32,7 +32,6 @@ const CombinedPage = () => {
 
   const [bookmarkedRestaurants, setBookmarkedRestaurants] = useState([]);
   const [recommendedRestaurants, setRecommendedRestaurants] = useState([]);
-  const [restaurantId, setRestaurantId] = useState('');
   const { username } = useParams();
   const [message, setMessage] = useState('');
   const [response, setResponse] = useState('');
@@ -40,7 +39,10 @@ const CombinedPage = () => {
   const [userInfo, setUserInfo] = useState({ username: '', email: '', language: '' });
   const [highlightedResponse, setHighlightedResponse] = useState('');
   const [foundRestaurants, setFoundRestaurants] = useState([]);
-  const [chatHistory, setChatHistory] = useState([]); // 채팅 내역 상태 추가
+  const [chatHistory, setChatHistory] = useState([]);
+  const [restaurantName, setRestaurantName] = useState('');
+  const [testImages, setTestImages] = useState([]);
+  const [restaurantMood, setRestaurantMood] = useState(null);
   const navigate = useNavigate();
   
   const baseURL = 'http://127.0.0.1:8000';  // Django 서버의 base URL
@@ -148,31 +150,30 @@ const CombinedPage = () => {
 
   const handleUnbookmark = async (restaurantName) => {
     try {
-        const accessToken = localStorage.getItem('access_token');
-        await fetch('http://127.0.0.1:8000/api/unsave-restaurant/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${accessToken}`,
-                'X-CSRFToken': getCookie('csrftoken')
-            },
-            credentials: 'include',
-            body: JSON.stringify({ name: restaurantName })  // Changed 'id' to 'name'
-        });
-        fetchBookmarkedRestaurants();
+      const accessToken = localStorage.getItem('access_token');
+      await fetch('http://127.0.0.1:8000/api/unsave-restaurant/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`,
+          'X-CSRFToken': getCookie('csrftoken')
+        },
+        credentials: 'include',
+        body: JSON.stringify({ name: restaurantName })
+      });
+      fetchBookmarkedRestaurants();
     } catch (error) {
-        console.error('Error unbookmarking restaurant:', error);
+      console.error('Error unbookmarking restaurant:', error);
     }
-};
-
+  };
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/set-csrf-token/', {
+    fetch(`${baseURL}/set-csrf-token/`, {
       method: 'GET',
       credentials: 'include'
     });
 
-    fetch(`http://127.0.0.1:8000/get-username/${username}/`, {
+    fetch(`${baseURL}/get-username/${username}/`, {
       method: 'GET',
       credentials: 'include'
     })
@@ -195,7 +196,7 @@ const CombinedPage = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/chatbot/', {
+      const response = await fetch(`${baseURL}/chatbot/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -209,6 +210,7 @@ const CombinedPage = () => {
         const data = await response.json();
         setResponse(data.response);
         highlightRestaurants(data.response);
+        fetchChatHistory(); // Update chat history after sending a new message
       } else {
         setError('Failed to submit message');
       }
@@ -235,7 +237,7 @@ const CombinedPage = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/logout/', {
+      const response = await fetch(`${baseURL}/logout/`, {
         method: 'POST',
         headers: {
           'X-CSRFToken': getCookie('csrftoken'),
@@ -258,6 +260,27 @@ const CombinedPage = () => {
     navigate('/restaurant');
   };
 
+  const handleDeleteAllChats = async () => {
+    try {
+      const response = await fetch(`${baseURL}/delete_all_chats/`, {
+        method: 'POST',
+        headers: {
+          'X-CSRFToken': getCookie('csrftoken'),
+        },
+        credentials: 'include',
+      });
+
+      if (response.ok) {
+        setChatHistory([]); // Clear chat history state
+      } else {
+        setError('Failed to delete chat history');
+      }
+    } catch (error) {
+      setError('Failed to delete chat history');
+      console.error(error);
+    }
+  };
+
   const renderChatHistory = () => {
     return chatHistory.map((chat, index) => (
       <div key={index} className="chat-message">
@@ -270,9 +293,63 @@ const CombinedPage = () => {
       </div>
     ));
   };
-  
 
-  
+  const handleTestApi = async () => {
+    try {
+      const accessToken = localStorage.getItem('access_token');
+      const response = await fetch('http://127.0.0.1:8000/api/restaurant-images/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`,
+          'X-CSRFToken': getCookie('csrftoken')
+        },
+        credentials: 'include',
+        body: JSON.stringify({ restaurant: restaurantName })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Fetched images:', data); // 콘솔 로그 추가
+        setTestImages(data);
+      } else {
+        const errorData = await response.json();
+        setError(errorData.error);
+      }
+    } catch (error) {
+      setError('Failed to fetch test images');
+      console.error(error);
+    }
+  };
+
+  const handleFetchRestaurantMood = async () => {
+    try {
+      const accessToken = localStorage.getItem('access_token');
+      const response = await fetch('http://127.0.0.1:8000/get-restaurant-mood/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`,
+          'X-CSRFToken': getCookie('csrftoken'),
+          
+        },
+        credentials: 'include',
+        body: JSON.stringify({ restaurant: restaurantName })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setRestaurantMood(data);
+      } else {
+        const errorData = await response.json();
+        setError(errorData.error);
+      }
+    } catch (error) {
+      setError('Failed to fetch restaurant mood');
+      console.error(error);
+    }
+  };
+
   return (
     <div className="combined-page">
       <div className="section recommended">
@@ -307,6 +384,7 @@ const CombinedPage = () => {
         </form>
         <button onClick={handleLogout}>Logout</button>
         <button onClick={handleNavigateToRestaurant}>Go to Restaurant Page</button>
+        <button onClick={handleDeleteAllChats}>Delete All Chat History</button>
         <div className="chat-history">
           {renderChatHistory()}
         </div>
@@ -333,9 +411,43 @@ const CombinedPage = () => {
           ))}
         </ul>
       </div>
+      <div className="section test-api">
+        <h2>Test API</h2>
+        <input
+          type="text"
+          value={restaurantName}
+          onChange={(e) => setRestaurantName(e.target.value)}
+          placeholder="Enter restaurant name"
+        />
+        <button onClick={handleTestApi}>Test API</button>
+        <div className="test-images">
+          {testImages.map((image, index) => (
+            <div key={index} className="image-container">
+              <p>{image.image_name}</p>
+              <img src={`http://127.0.0.1:8000${image.image_en}`} alt={`${image.image_name} English`} />
+              <img src={`http://127.0.0.1:8000${image.image_ko}`} alt={`${image.image_name} Korean`} />
+              <img src={`http://127.0.0.1:8000${image.image_zh}`} alt={`${image.image_name} Chinese`} />
+              <img src={`http://127.0.0.1:8000${image.image_ja}`} alt={`${image.image_name} Japanese`} />
+            </div>
+          ))}
+        </div>
+        <h2>Get Restaurant Mood</h2>
+        <input
+          type="text"
+          value={restaurantName}
+          onChange={(e) => setRestaurantName(e.target.value)}
+          placeholder="Enter restaurant name"
+        />
+        <button onClick={handleFetchRestaurantMood}>Get Mood</button>
+        {restaurantMood && (
+          <div>
+            <p>Mood: {restaurantMood.mood}</p>
+            <p>Category: {restaurantMood.category}</p>
+          </div>
+        )}
+      </div>
     </div>
   );
-
 };
 
 export default CombinedPage;
