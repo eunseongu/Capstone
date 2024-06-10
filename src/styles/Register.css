@@ -1,101 +1,187 @@
-.register__container {
-  height: 100vh;
-  display: flex;
-  flex-direction: row;
+@font-face {
+  font-family: "Architype Aubette W90";
+  src: url("https://db.onlinewebfonts.com/t/26afb49b8b7dda2c10686589d6fc7b55.eot");
+  src: url("https://db.onlinewebfonts.com/t/26afb49b8b7dda2c10686589d6fc7b55.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/26afb49b8b7dda2c10686589d6fc7b55.woff2")
+      format("woff2"),
+    url("https://db.onlinewebfonts.com/t/26afb49b8b7dda2c10686589d6fc7b55.woff")
+      format("woff"),
+    url("https://db.onlinewebfonts.com/t/26afb49b8b7dda2c10686589d6fc7b55.ttf")
+      format("truetype"),
+    url("https://db.onlinewebfonts.com/t/26afb49b8b7dda2c10686589d6fc7b55.svg#Architype Aubette W90")
+      format("svg");
 }
 
-.register-left {
-  width: 55vw;
+body {
+  margin: 0;
+  font-family: "Arial Rounded Bold", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.register__container {
   height: 100vh;
-  background: linear-gradient(180deg, #FFFFFF 0%, #dce5fd 58%, #2845ed 100%);
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, rgba(15, 124, 240, 0.937255) 0%, rgba(62, 195, 254, 0.937255) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.register__images {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.register__images img {
+  position: absolute;
+}
+
+.register-left__image2 {
+  top: 3%;
+  right: 5%;
+  width: 25%;
+}
+
+.register-left__image1 {
+  bottom: 20%;
+  right: -2%;
+  width: 20%;
+  background-image: url('./../img/cupcake.png');
+  background: rgba(255, 255, 255, 0); /* 배경 제거 */
+
+}
+
+.register-left__image3 {
+  bottom: 0%;
+  left: -5%;
+  width: 20%;
+}
+
+.register-left__image4 {
+  top: 5%;
+  left: 5%;
+  width: 20%;
+  transform: rotate(0deg);
+  background-image: url('./../img/cheese.png');
+  background: rgba(255, 255, 255, 0); /* 배경 제거 */
+
+}
+
+.register-left__image5 {
+  bottom: -10%;
+  left: 20%;
+  width: 20%;
+  background-image: url('./../img/egg.png');
+  background: rgba(255, 255, 255, 0); /* 배경 제거 */
+
+}
+
+.register-left__image6 {
+  top: 25%;
+  left: 46.5%;
+  width: 7%;
 }
 
 .register-right {
-  width: 45vw;
-  height: 100vh;
-  background: white;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.font {
-  font-family: 'Poppins';
-  font-style: normal;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 80px;
+  background: rgba(255, 255, 255, 0); /* 배경 제거 */
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1); /* 그림자 제거 */
+  font-family: "Arial Rounded Bold", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif; /* 폰트 설정 */
 }
 
 .register-right__text-box {
-  display: inline-block;
   text-align: center;
-  height: 160px;
-  margin: 35px 0 0 0;
+  font-family: "Arial Rounded Bold";
 }
 
 .register-right__text-box02 {
-  display: inline-block;
   text-align: center;
-  margin: 0px 0 20px 0;
+  margin-bottom: 20px;
+  font-family: "Arial Rounded Bold";
 }
 
 .register-right__k-rebot {
+  font-family: "Architype Aubette W90", sans-serif;
   font-weight: bold;
-  font-size: 60px;
+  font-size: 95px;
   line-height: 100%;
-  color: black;
+  color: yellow;
+  margin-bottom: 150px;
 }
 
-
 .register-right__hello {
+  font-family: "Architype Aubette W90", sans-serif;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 21px;
   line-height: 100%;
 }
 
 .register-right__input-box {
   box-sizing: border-box;
-
-  width: 290px;
+  width: 100%;
   height: 55px;
   margin-bottom: 15px;
-
-  background: #F7F8F9;
-  border: 1px solid #E8ECF4;
+  background: #f7f8f9;
+  border: 1px solid #e8ecf4;
   border-radius: 6px;
-
   font-weight: 500;
   font-size: 15px;
   line-height: 125%;
   padding-left: 15px;
-  color: #8391A1;
+  color: #8391a1;
 }
 
 .register-right__button {
-  width: 290px;
+  width: 100%;
   height: 63px;
   border-radius: 6px;
-
   font-weight: 600;
-  font-size: 17px;
+  font-size: 25px;
   line-height: 38px;
   margin-top: 30px;
   color: white;
   background-color: black;
   border: none;
-
+  font-family: "Architype Aubette W90", sans-serif;
 }
 
 option {
-  background: #E2DFFF;
+  background: #e2dfff;
 }
 
 form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .register-right__error-message {
   margin-top: 0;
-  margin-bottom: 20;
+  margin-bottom: 20px;
   color: rgb(211, 53, 53);
+}
+
+.font {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
 }

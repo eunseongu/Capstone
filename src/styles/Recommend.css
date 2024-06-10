@@ -2,6 +2,12 @@
   font-family: 'Poppins';
   font-style: normal;
 }
+.recommend__map-recommend-container{
+  /* border: 1.5px solid #9a9a9a; */
+width: 99%;
+overflow: auto;
+height: 100%;
+}
 
 .recommend-item__container {
   /* opacity: 0; */
@@ -11,11 +17,6 @@
   align-items: center;
 }
 
-.recommend-item__container.visible {
-  /* opacity: 1; */
-  /* transform: translateY(0); */
-  /* align-items: center; */
-}
 
 .recommend-item__img {
   margin-right: 20px;
@@ -31,9 +32,7 @@
   width: 100%;
 }
 
-.recommend-item__text-box {
-  text-align: center;
-}
+
 
 .recommend-item__text {
   margin: 0;
@@ -42,8 +41,7 @@
   font-family: 'Poppins';
   font-style: normal;
   font-weight: bold;
-
-
+  max-width: 80px;
 }
 
 .recommend-item__list {
@@ -55,8 +53,10 @@
   height: 25px;
   cursor: pointer;
   margin-left: auto;
+  margin-right: 15px;
   z-index: 1;
   position: relative;
+  /* margin-bottom: 120px; */
 }
 
 .couple-icon {
@@ -67,18 +67,27 @@
   margin-right: 5px;
   margin-left: 8px;
 }
-
 .recommend-item__icon-container {
-  background-color: rgb(236, 236, 236);
-  display: flex;
-  width: 110px;
-  border-radius: 10px;
+  background-color: rgb(46, 46, 46);
+  display: inline-flex; /* inline-flex로 변경 */
+  border-radius: 8px;
   align-items: center;
   margin-top: 10px;
+  min-width: 50px; /* 최소 너비 설정 */
+  padding: 4px 10px; /* 내부 여백 추가 */
+  box-sizing: border-box; /* 패딩 포함한 박스 크기 계산 */
+  margin-right: 5px;
+  margin-bottom: 20px;
+  
 }
 
 .recommend-item__icon-text {
-  margin-left: 10px;
-  margin-right: 10px;
   font-size: 12px;
-}
+  white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+  margin-top: 4px;
+  margin-bottom: 4px;
+  color: white;
+    /* margin-left: 10px; */
+    /* margin-right: 10px; */
+  }
+

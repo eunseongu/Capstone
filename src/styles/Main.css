@@ -1,3 +1,18 @@
+@font-face {
+    font-family: "Architype Aubette W90";
+    src: url("https://db.onlinewebfonts.com/t/26afb49b8b7dda2c10686589d6fc7b55.eot");
+    src: url("https://db.onlinewebfonts.com/t/26afb49b8b7dda2c10686589d6fc7b55.eot?#iefix")
+        format("embedded-opentype"),
+      url("https://db.onlinewebfonts.com/t/26afb49b8b7dda2c10686589d6fc7b55.woff2")
+        format("woff2"),
+      url("https://db.onlinewebfonts.com/t/26afb49b8b7dda2c10686589d6fc7b55.woff")
+        format("woff"),
+      url("https://db.onlinewebfonts.com/t/26afb49b8b7dda2c10686589d6fc7b55.ttf")
+        format("truetype"),
+      url("https://db.onlinewebfonts.com/t/26afb49b8b7dda2c10686589d6fc7b55.svg#Architype Aubette W90")
+        format("svg");
+  }
+
 .font {
     font-family: 'Poppins';
     font-style: normal;
@@ -9,20 +24,24 @@ body {
     flex-direction: column;
     -ms-overflow-style: none;
 }
-
 ::-webkit-scrollbar {
-    display: none;
+    width: 8px; /* 스크롤바 너비 */
+    height: 0px; /* 수평 스크롤바의 경우 사용 */
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgba(121, 121, 121, 0.5); /* 스크롤바 색상 */
+    border-radius: 5px; /* 스크롤바의 모서리 둥글게 */
 }
 
 
 .main__container {
     display: flex;
     flex-direction: row;
-    height: 87vh;
+    height: 100vh;
 }
 
 header {
-    border-bottom: 1.5px solid #ccc;
+    /* border-bottom: 1.5px solid #ccc; */
     background: linear-gradient(90deg, #FFFFFF 43%, #f74b4b 70%, #0059ab 90%);
     width: 100vw;
     height: 100px;
@@ -34,16 +53,16 @@ header {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    background:linear-gradient(90deg, rgba(15, 124, 240, 0.937255) 0%, rgba(62, 195, 254, 0.937255) 100%);
 }
 
 .recommend__container {
-    height: 90%;
+    height: 84%;
     width: 90%;
     border-radius: 7px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow: auto;
 }
 
 .recommend__button-container {
@@ -64,33 +83,53 @@ header {
 
 
 .header__text-box {
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
     text-align: center;
-    margin: 0px 0 0px 95px;
+    align-content: center;
+    margin-top: -10px;
+}
+.header__k-rebot-img {
+    background-image: url('./../img/rebot.png');
+    width: 40px;
+    height: 40px;
+    margin-top: 32px;
+    margin-left: 15px;
 }
 
 .header__k-rebot {
-    font-weight: bold;
-    font-size: 35px;
+  font-family: "Architype Aubette W90", sans-serif;
+
+    /* font-weight: bold; */
+    margin-left: 15px;
+    font-size: 37px;
     line-height: 100%;
-    color: black;
+    color: yellow;
 }
 
 .header__text-box02 {
     display: inline-block;
     text-align: center;
-    margin: 0px 0 0 5%;
+    margin: -10px 0 35px 35%;
+    /* background-color: red; */
 }
 
 .header__text-box03 {
     display: inline-block;
     text-align: center;
-    margin: 0px 0 0 61%;
+    /* background-color: red; */
+    margin: 20px 0 45px 0;
 }
 
 .header__logout {
-    font-size: 14px;
-    color: white;
+    font-size: 18px;
+    color: black;
+    font-weight: 500;
+}
+
+.header__welcome {
+    font-size: 16px;
+    color: black;
     font-weight: 500;
 }
 
@@ -134,5 +173,48 @@ header {
     content: "|";
     position: absolute;
     right: -5px;
+}
+
+.recommend__error-message {
+    margin-top: 0;
+    /* margin-bottom: 20; */
+    color: rgb(210, 42, 42);
+    font-size: 13px;
+  }
+
+  .recommend__input-box {
+    display: flex;
+    align-items: center;
+    width: 332px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #fff;
+    margin: 3px;
+}
+
+.recommend__input {
+    flex-grow: 1;
+    border: none;
+    padding: 0 0 0 20px;
+    font-size: 14.5px;
+    border-radius: 15px;
+    outline: none;
+}
+
+.recommend__input_button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 7px;
+    padding: 3px;
+    margin-left: auto;
+    width: 20px;
+    height: 20px;
+    background-image: url('./../img/search.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    outline: none;
 }
 

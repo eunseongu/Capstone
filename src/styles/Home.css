@@ -1,42 +1,56 @@
+@font-face {
+  font-family: "Architype Aubette W90";
+  src: url("https://db.onlinewebfonts.com/t/26afb49b8b7dda2c10686589d6fc7b55.eot");
+  src: url("https://db.onlinewebfonts.com/t/26afb49b8b7dda2c10686589d6fc7b55.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/26afb49b8b7dda2c10686589d6fc7b55.woff2")
+      format("woff2"),
+    url("https://db.onlinewebfonts.com/t/26afb49b8b7dda2c10686589d6fc7b55.woff")
+      format("woff"),
+    url("https://db.onlinewebfonts.com/t/26afb49b8b7dda2c10686589d6fc7b55.ttf")
+      format("truetype"),
+    url("https://db.onlinewebfonts.com/t/26afb49b8b7dda2c10686589d6fc7b55.svg#Architype Aubette W90")
+      format("svg");
+}
+
 .home__container {
   height: 100vh;
+  width: 100vw;
   display: flex;
-  flex-direction: row;
-  background-size: cover;
-}
-
-.home-left {
-  width: 40vw;
-  height: 100vh;
-  background: linear-gradient(180deg, #dddddd 0%, #d5d5d5 55%, #ffffff00 100%);
-  display: flex;
-  justify-content: center;
   align-items: center;
-  z-index: 2;
+  justify-content: center;
+  
+  background: linear-gradient(90deg, rgba(15, 124, 240, 0.937255) 0%, rgba(62, 195, 254, 0.937255) 100%);
+  position: relative;
+  overflow: hidden;
 }
 
-.home-left__logo {
-  width: 280px;
-  height: auto;
-  margin-bottom: 20px;
-}
+
 
 .home-right {
 
-  width: 60vw;
-  height: 100vh;
-  background: linear-gradient(180deg, #151515 45%,  #464646 70%,#ffffff 100%);
-
+  width: 100%;
+  /* max-width: 400px; */
+  padding: 20px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 80px;
+  background: rgba(255, 255, 255, 0); /* 배경 제거 */
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1); /* 그림자 제거 */
+  font-family: "Arial Rounded Bold", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif; /* 폰트 설정 */
 
 }
 .home-right__button-container{
   width: 300px;
   height: 100px;
   display: flex;
-  margin-left: 540px;
+  margin-left: 78%;
   flex-direction: row; 
   align-items: center; 
   justify-content: flex-end;
@@ -55,28 +69,87 @@
 .home-right__text-box {
   display: inline-block;
   text-align: center;
-  margin: 70px 0 40px 0;
+  margin: -50px 0 30px 0;
+  
+}
+.home-right__korean-text-box {
+  display: inline-block;
+  text-align: center;
+  margin: -10px 0 90px 0;
+  
 }
 
 .home-right__k-rebot {
-  font-weight: 700;
-  font-size: 60px;
+  font-family: "Architype Aubette W90", sans-serif;
+  font-weight: bold;
+  font-size: 95px;
   line-height: 100%;
-  color: #FFFFFF;
+  color: yellow;
+  /* margin-top: -10px; */
+  margin-bottom: -10px;
 }
+.home-right__seongsu{
+  font-family: "Architype Aubette W90", sans-serif;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 100%;
+  color:  rgb(16, 181, 252);
+  margin-bottom: 120px;
+  margin-top:-20px;
+  margin-left: 380px;
+}
+.home-right__korean {
+  font-family: "Architype Aubette W90", sans-serif;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 100%;
+  color: rgb(253, 253, 163);
+  /* margin-top:80px; */
+  /* margin-bottom: 80px; */
+  overflow: hidden; /* 텍스트 오버플로우를 숨김 */
+  white-space: nowrap; /* 텍스트가 줄바꿈되지 않도록 설정 */
+  padding-bottom: 7px; /* 아래쪽 여분의 공간 확보 */
+  border-right: .15em solid orange; /* 텍스트의 오른쪽에 깜빡이는 커서 생성 */
+  animation: typing 2s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+
+/* 타이핑 애니메이션 키프레임 */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* 커서 깜빡임 애니메이션 키프레임 */
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: orange;
+  }
+}
+
 
 .home-right__button {
 
   width: 290px;
   height: 63px;
-  border-radius: 6px;
 
+  border-radius: 6px;
   font-weight: 600;
-  font-size: 17px;
+  font-size: 20px;
   line-height: 38px;
-  margin: 10px;
-  color: #404040;
+  margin-top: 30px;
+  color: white;
+  background-color: black;
   border: none;
+  font-family: "Architype Aubette W90", sans-serif;
+  cursor: pointer;
 }
 
 
@@ -97,11 +170,72 @@
   margin-right: 10px;
   padding: 0 5px; 
   position: relative; 
-  color:white;
+  color:black;
   font-size: 14px;
+  cursor: pointer;
 }
 .home-right__language-button::after {
   content: "|"; 
   position: absolute;
   right: -5px; 
+}
+
+.home__images {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.home__images img {
+  position: absolute;
+}
+
+.home-left__image2 {
+  top: 46%;
+  right: 31%;
+  width: 14%;
+  background-image: url('./../img/bubble.png');
+  background: rgba(255, 255, 255, 0); /* 배경 제거 */
+}
+
+
+
+.home-left__image3 {
+  bottom: 0%;
+  left: -5%;
+  width: 20%;
+  background-image: url('./../img/egg.png');
+  background: rgba(255, 255, 255, 0); /* 배경 제거 */
+}
+
+.home-left__image4 {
+  bottom: 70%;
+  left: 1%;
+  width: 22%;
+  transform: rotate(0deg);
+  background-image: url('./../img/flight.png');
+  background: rgba(255, 255, 255, 0); /* 배경 제거 */
+
+}
+
+.home-left__image5 {
+  background-image: url('./../img/korea.png');
+  /* background-repeat: no-repeat;   */
+  bottom: 10%;
+  left: 80%;
+  width: 12%;
+  transform: scaleX(-1) rotate(-10deg);
+  background: rgba(255, 255, 255, 0); /* 배경 제거 */
+  /* background-color: red; */
+  /* background-position: center; 이미지를 가운데로 정렬 */
+
+}
+
+.home-left__image6 {
+  top: 56%;
+  left: 46.5%;
+  width: 7%;
+  /* background-image: url('./../img/rebot.png'); */
+  
 }

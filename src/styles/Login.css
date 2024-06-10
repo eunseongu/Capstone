@@ -1,22 +1,116 @@
-.login__container {
-  height: 100vh;
-  display: flex;
-  flex-direction: row;
+@font-face {
+  font-family: "Architype Aubette W90";
+  src: url("https://db.onlinewebfonts.com/t/26afb49b8b7dda2c10686589d6fc7b55.eot");
+  src: url("https://db.onlinewebfonts.com/t/26afb49b8b7dda2c10686589d6fc7b55.eot?#iefix")
+      format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/26afb49b8b7dda2c10686589d6fc7b55.woff2")
+      format("woff2"),
+    url("https://db.onlinewebfonts.com/t/26afb49b8b7dda2c10686589d6fc7b55.woff")
+      format("woff"),
+    url("https://db.onlinewebfonts.com/t/26afb49b8b7dda2c10686589d6fc7b55.ttf")
+      format("truetype"),
+    url("https://db.onlinewebfonts.com/t/26afb49b8b7dda2c10686589d6fc7b55.svg#Architype Aubette W90")
+      format("svg");
 }
 
-.login-left {
+.login__container {
+ height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, rgba(15, 124, 240, 0.937255) 0%, rgba(62, 195, 254, 0.937255) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.login__images {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.login__images img {
+  position: absolute;
+}
+
+.login-left__image2 {
+  top: 3%;
+  right: 5%;
+  width: 20%;
+  transform: scaleX(-1) rotate(-30deg);
+  background-image: url('./../img/egg.png');
+  background: rgba(255, 255, 255, 0); /* 배경 제거 */
+
+  /* egg */
+}
+
+.login-left__image1 {
+  bottom: -10%;
+  right: -2%;
+  width: 20%;
+  transform: scaleX(-1);
+  background-image: url('./../img/cola.png');
+  background: rgba(255, 255, 255, 0); /* 배경 제거 */
+
+
+}
+
+.login-left__image3 {
+  bottom: 20%;
+  left: 4%;
+  width: 25%;
+  /* pizza */
+  transform: scaleX(-1) rotate(30deg);
+  background: rgba(255, 255, 255, 0); /* 배경 제거 */
+
+  background-image: url('./../img/pizza.png');
+
+  /* transform: scaleY(-1); */
+}
+
+.login-left__image4 {
+  top: 5%;
+  left: 5%;
+  width: 20%;
+  transform: rotate(0deg);
+}
+
+.login-left__image5 {
+  bottom: -10%;
+  left: 20%;
+  width: 20%;
+}
+
+.login-left__image6 {
+  top: 28%;
+  left: 46.5%;
+  width: 7%;
+}
+
+/* .login-left {
   width: 55vw;
   height: 100vh;
   background: linear-gradient(180deg, #FFFFFF 0%, #FFCCCC 55%, #CF1E27 100%);
-}
+} */
 
 .login-right {
-  width: 45vw;
-  height: 100vh;
-  background: white;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 80px;
+  background: rgba(255, 255, 255, 0); /* 배경 제거 */
+  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1); /* 그림자 제거 */
+  font-family: "Arial Rounded Bold", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif; /* 폰트 설정 */
 }
 
 .font {
@@ -25,60 +119,59 @@
 }
 
 .login-right__text-box {
-  display: inline-block;
   text-align: center;
-  height: 160px;
-  margin: 40px 0 0 0;
+  font-family: "Arial Rounded Bold";
 }
 
 .login-right__text-box02 {
-  display: inline-block;
-  margin: 20px 0 40px -35px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: "Arial Rounded Bold";
 }
 
 .login-right__k-rebot {
+  font-family: "Architype Aubette W90", sans-serif;
   font-weight: bold;
-  font-size: 60px;
+  font-size: 95px;
   line-height: 100%;
-  color: black;
+  color: yellow;
+  margin-bottom: 220px;
 }
 
 .login-right__hello {
+  font-family: "Architype Aubette W90", sans-serif;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 21px;
   line-height: 100%;
 }
 
 .login-right__input-box {
   box-sizing: border-box;
-
-  width: 290px;
+  width: 100%;
   height: 55px;
   margin-bottom: 15px;
-
-  background: #F7F8F9;
-  border: 1px solid #E8ECF4;
+  background: #f7f8f9;
+  border: 1px solid #e8ecf4;
   border-radius: 6px;
-
   font-weight: 500;
   font-size: 15px;
   line-height: 125%;
   padding-left: 15px;
-  color: #8391A1;
+  color: #8391a1;
 }
 
 .login-right__button {
-  width: 290px;
+  width: 100%;
   height: 63px;
   border-radius: 6px;
-
   font-weight: 600;
-  font-size: 17px;
+  font-size: 25px;
   line-height: 38px;
   margin-top: 30px;
   color: white;
   background-color: black;
   border: none;
+  font-family: "Architype Aubette W90", sans-serif;
 }
 
 
@@ -86,6 +179,7 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 .login-right__error-message {

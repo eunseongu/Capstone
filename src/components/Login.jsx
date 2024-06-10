@@ -2,7 +2,12 @@ import './../styles/Login.css';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-
+import Image1 from './../img/cola.png'
+import Image2 from './../img/egg.png'
+import Image3 from './../img/pizza.png'
+import Image4 from'./../img/cheese.png'
+import Image5 from './../img/cupcake.png'
+import Image6 from './../img/rebot.png'
 
 export default function Login() {
     const navigate = useNavigate();
@@ -56,7 +61,7 @@ export default function Login() {
     
         if (!response.ok) {
           const errorData = await response.json();
-          setErrorMessage('Invalid email or password');
+          setErrorMessage(errorData.error);
           console.error('>>> [로그인] 🤬 ERROR >>>', errorData);
         } else {
           const data= await response.json();
@@ -80,15 +85,22 @@ export default function Login() {
 
     return (
         <div className='login__container'>
-            <div className='login-left'></div>
+            <div className="login__images">
+        {/* <img src={Image1} alt="Decorative" className="login-left__image1" /> */}
+        {/* <img src={Image2} alt="Decorative" className="login-left__image2" /> */}
+        {/* <img src={Image3} alt="Decorative" className="login-left__image3" /> */}
+        {/* <img src={Image4} alt="Decorative" className="login-left__image4" /> */}
+        {/* <img src={Image5} alt="Decorative" className="login-left__image5" /> */}
+        <img src={Image6} alt="Decorative" className="login-left__image6" />
+      </div>
             <div className='login-right'>
 
                 <div className='login-right__text-box'>
-                    <p className='login-right__k-rebot font'>K-REBOT</p>
+                    <p className='login-right__k-rebot'>K-REBOT</p>
                 </div>
                 <div className='login-right__text-box02'>
-                    <p className='login-right__hello font'>{t('Login.welcome')}</p>
-                    <p className='login-right__hello font'>{t('Login.glad')}</p>
+                    <p className='login-right__hello'>{t('Login.welcome')}</p>
+                    <p className='login-right__hello'>{t('Login.glad')}</p>
                 </div>
                 <form onSubmit={onSubmitHandler}>
                     <input

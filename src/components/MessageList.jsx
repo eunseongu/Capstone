@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import robotImg from './../img/food-serving (2).png';
-import userImg from './../img/user.png';
+import robotImg from './../img/bot-img.png';
+import userImg from './../img/u.png';
 import { restaurants_list } from './restaurant_list';
 import './../styles/Chat.css';
 
@@ -14,6 +14,7 @@ export const MessageList = ({ handleDeleteAllChats,renderChatHistory,messages, o
     useEffect(() => {
         scrollToBottom();
     }, [messages]);
+    
 
     const highlightRestaurants = (isUser, text) => {
         const pattern = new RegExp(`(${restaurants_list.join('|')})`, 'gi');
@@ -51,7 +52,7 @@ export const MessageList = ({ handleDeleteAllChats,renderChatHistory,messages, o
                         )}
 
                         <div className={message.isUser ? 'chat__user-message-box' : 'chat__bot-message-box'}>
-                            <span>{highlightedText}</span>
+                            <span >{highlightedText}</span>
                         </div>
 
                         {message.isUser && (

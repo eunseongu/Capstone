@@ -12,10 +12,11 @@ import { MessageForm } from './MessageForm';
 import MapBookmark from './MapBookmark';
 import Recommend from './Recommend';
 import Bookmark from './Bookmark';
-import RestaurantCoordinates from './RestaurantCoordinates';
+// import RestaurantCoordinates from './RestaurantCoordinates';
 import { getRestaurantCoordinates } from './GetRestaurantCoordinates';
-import robotImg from './../img/food-serving (2).png';
+import robotImg from './../img/rebot.png';
 import userImg from './../img/user.png';
+import Tooltip from './Tooltip';
 
 const Chat = () => {
   const navigate = useNavigate();
@@ -111,20 +112,21 @@ const Chat = () => {
       .then(data => {
         setUserInfo({ username: data.username, language: data.language });
         localStorage.setItem('userInfo', JSON.stringify({ username: data.username, language: data.language }));
-        if (data.language == "Japanese") { i18n.changeLanguage('ja'); }
-        if (data.language == "Korean") { i18n.changeLanguage('kr'); }
-        if (data.language == "Chinese") { i18n.changeLanguage('zh'); }
-        if (data.language == "English") { i18n.changeLanguage('en'); }
+        if (data.language === "Japanese") { i18n.changeLanguage('ja'); }
+        if (data.language === "Korean") { i18n.changeLanguage('kr'); }
+        if (data.language === "Chinese") { i18n.changeLanguage('zh'); }
+        if (data.language === "English") { i18n.changeLanguage('en'); }
       })
       .catch(error => console.log(error));
   }, [username, i18n]);
 
+  const [isEnlarged, setIsEnlarged] = useState(false);
 
   const handleRestaurantClick = async (restaurantName) => {
     try {
       const coords = await getRestaurantCoordinates(restaurantName);
       setSelectedLocation(coords);
-      setZoom(20);
+      setZoom(23);
       setSelectedRestaurant(restaurantName);
       if (selectedOption === 'recommend' && selectedRestaurant) {
         setSelectedOption('map');
@@ -287,23 +289,37 @@ const Chat = () => {
       console.error('Error unbookmarking restaurant:', error);
     }
   };
+  const [name, setName] = useState('');
+  const [showMap, setShowMap] = useState(false); // 상태를 추가하여 MapCustom 컴포넌트의 렌더링을 제어합니다.
+  const [errorMessage, setErrorMessage] = useState('');
+  const handleRestaurantSearch = async (e) => {
+    e.preventDefault();
+
+    try {
+      const coords = await getRestaurantCoordinates(name);
+      setErrorMessage('');
+      setSelectedLocation(coords);
+      setZoom(23);
+      setSelectedRestaurant(name); // 검색된 식당 이름 상태 설정
+      setSelectedOption('map'); // Mapcustom 컴포넌트를 다시 렌더링하도록 상태 변경
+      setName('');
+    } catch (error) {
+      setErrorMessage('식당이 존재하지 않습니다.');
+      console.log(error.message);
+    }
+  };
 
   return (
     <>
-      <header>
-        <div className='header__text-box' onClick={logoOnClick}>
-          <p className='header__k-rebot font'>K-REBOT</p>
-        </div>
-        <div className='header__text-box03'>
-          <p className='header__logout font'>{t('Chat.user')} {userInfo.username}!</p>
-        </div>
-        <div className='header__text-box02'>
-          <p className='header__logout font' onClick={onLogoutHandler}>{t('Chat.logout')}</p>
-        </div>
-      </header>
+
 
       <div className='main__container'>
+
         <aside className='recommend'>
+          <div className='header__text-box' onClick={logoOnClick}>
+            <p className='header__k-rebot'>K-REBOT</p>
+            <img className='header__k-rebot-img' src={robotImg}></img>
+          </div>
           <div className='recommend__container'>
             <div className='recommend__button-container'>
               <div>
@@ -315,26 +331,65 @@ const Chat = () => {
                   } else if (selectedOption === 'recommend') {
                     fetchRecommendedRestaurants();
                   }
-                }}></button>
+                }}>
+                </button>
+                <Tooltip text="This is a tooltip">
+        <button>?</button>
+      </Tooltip>
               </div>
             </div>
+            <form onSubmit={handleRestaurantSearch}>
+              <div className='recommend__input-box'>
+                <input
+                  type="text"
+                  className='recommend__input'
+                  value={name}
+                  placeholder={t('Map.search')}
+                  onChange={(e) => setName(e.target.value)}
+                />
+                <button type="submit" className='recommend__input_button'></button>
+              </div>
+              {errorMessage && <p className='recommend__error-message'>{errorMessage}</p>}
 
-            {selectedOption === 'map' &&
-              <Wrapper render={render}>
-                {selectedRestaurant && <RestaurantCoordinates />}
-                <Mapcustom markerLocation={selectedLocation} language={localStorage.getItem('i18nextLng')} zoom={zoom} />
-                {selectedRestaurant && <MapBookmark restaurantName={selectedRestaurant}
-                  handleBookmark={handleBookmark} handleUnbookmark={handleUnbookmark} bookmarkedRestaurants={bookmarkedRestaurants} />}
+            </form>
+            <div className='recommend__map-recommend-container'>
+              {selectedOption === 'map' &&
+                <Wrapper render={render}>
 
-              </Wrapper>
-            }
-            {selectedOption === 'recommend' && <Recommend recommendedRestaurants={recommendedRestaurants}
-              baseURL={baseURL} handleBookmark={handleBookmark} handleUnbookmark={handleUnbookmark}
-              fetchBookmarkedRestaurants={fetchBookmarkedRestaurants} bookmarkedRestaurants={bookmarkedRestaurants} />}
+                  <Mapcustom
+                    markerLocation={selectedLocation}
+                    language={localStorage.getItem('i18nextLng')}
+                    zoom={zoom}
+                  />
+                  {selectedRestaurant &&
+                    <MapBookmark
+                      restaurantName={selectedRestaurant}
+                      handleBookmark={handleBookmark}
+                      handleUnbookmark={handleUnbookmark}
+                      bookmarkedRestaurants={bookmarkedRestaurants}
+                    />}
+                </Wrapper>
+              }
+              {selectedOption === 'recommend' &&
+
+                <Recommend
+                  recommendedRestaurants={recommendedRestaurants}
+                  baseURL={baseURL}
+                  handleBookmark={handleBookmark}
+                  handleUnbookmark={handleUnbookmark}
+                  fetchBookmarkedRestaurants={fetchBookmarkedRestaurants}
+                  bookmarkedRestaurants={bookmarkedRestaurants}
+                />
+              }
+            </div>
           </div>
         </aside>
 
         <main className='chat'>
+          <div className='header__text-box03'>
+            <p className='header__welcome font'>{t('Chat.user')} {userInfo.username}!</p>
+          </div>
+
           <MessageList
             messages={messages}
             onRestaurantClick={handleRestaurantClick}
@@ -348,6 +403,9 @@ const Chat = () => {
           />
         </main>
         <aside className='bookmark'>
+          <div className='header__text-box02'>
+            <p className='header__logout font' onClick={onLogoutHandler}>{t('Chat.logout')}</p>
+          </div>
           <div className='bookmark__text-box'>
             <p className='bookmark__text font'>{t('Chat.bookmark')}</p>
           </div>

@@ -1,29 +1,87 @@
 {
   "Home":{
     "login":"Login",
-    "register":"Register"
+    "register":"Register",
+    "seongsu":"Korean Restaurant Chatbot"
   },
    "Login":{
-    "welcome": "Welcome back!",
-    "glad":"Glad to see you, Again!",
+    "welcome": "WELCOME BACK!",
+    "glad":"GLAD TO SEE YOU, AGAIN!",
     "enter_email":"Enter your email",
     "enter_password":"Enter your password"
    },
    "Register":{
-    "hello":"Hello! Register to get started",
+    "hello":"HELLO! REGISTER TO GET STARTED",
     "email":"Email",
     "password":"Password",
     "confirm_password":"Confirm password",
-    "choose_language":"Choose your language"
+    "choose_language":"Choose your language",
+    "register":"Register"
    },
    "Chat":{
     "map":"Map",
     "bookmark":"Bookmark",
     "logout":"Logout",
     "recommend":"Recommend",
-    "user":"Welcome, "
+    "user":"Welcome, ",
+    "delete": "Delete All Chat"
+
    },
    "Map":{
-    "thumbnail":"View Thumbnail"
+    "thumbnail":"View Thumbnail",
+    "closethumbnail":"Close Thumbnail",
+    "search": "Search for the restaurant location",
+    "marker":"Click on the restaurant name on the map to view the information"
+   },
+   "Category":{
+"감자탕":"Gamjatang",
+"곱창,막창,양":"Gopchang, Makchang, Yang",
+"국수":"Guksu",
+"닭요리":"Dak-yori",
+"덮밥":"Deopbap",
+"돈가스":"Donkatsu",
+"돼지고기구이":"Dwaeji-gogi-gui",
+"딤섬,중식만두":"Dim Sum, Jungsik Mandu",
+"떡볶이":"Tteokbokki",
+"멕시코,남미음식":"Mexican, South American Food",
+"바(BAR)":"Bar",
+"백반,가정식":"Baekban, Gajeongsik",
+"베이커리":"Bakery",
+"베트남음식":"Vietnamese Food",
+"브런치":"Brunch",
+"샌드위치":"Sandwich",
+"샤브샤브":"Shabu-shabu",
+"술집":"Sooljip",
+"스파게티,파스타전문":"Spaghetti, Pasta Specialty",
+"식당 종류":"Types of Restaurants",
+"아귀찜,해물찜":"Agujjim, Haemuljjim",
+"아시아음식":"Asian Food",
+"양꼬치":"Yang Kkochi",
+"양식":"Western Food",
+"요리주점":"Yori Jujom",
+"우동,소바":"Udon, Soba",
+"육류,고기요리":"Meat Dishes",
+"이자카야":"Izakaya",
+"이탈리아음식":"Italian Food",
+"일본식라면":"Japanese Ramen",
+"일식당":"Japanese Restaurant",
+"일식튀김,꼬치":"Japanese Tempura, Kkochi",
+"족발,보쌈":"Jokbal, Bossam",
+"종합분식":"Comprehensive Bunsik",
+"중식당":"Chinese Restaurant",
+"초밥,롤":"Sushi, Roll",
+"치킨,닭강정":"Chicken, Dakgangjeong",
+"카페,디저트":"Cafe, Dessert",
+"칼국수,만두":"Kalguksu, Mandu",
+"태국음식":"Thai Food",
+"퓨전음식":"Fusion Food",
+"피자":"Pizza",
+"한식":"Korean Food",
+"햄버거":"Hamburger"
+
+   },"Mood": {
+    "친구": "With Friends",
+    "연인": "With Partner·Spouse",
+    "지인": "With Acquaintances·Colleagues"
    }
   }

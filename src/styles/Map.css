@@ -1,7 +1,15 @@
 .map{
   width: 100%;
-  height: 100%;
+  height: 510px;
   display: flex;
+  border-radius: 5px;
+}
+
+.map__nonClick{
+  width: 100%;
+  height: 560px;
+  display: flex;
+  border-radius: 5px;
 }
 
 h4 {

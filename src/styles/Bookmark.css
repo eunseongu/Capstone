@@ -12,7 +12,7 @@
 }
 
 .bookmark__box {
-    height: 84%;
+    height: 77%;
     width: 78%;
     border-radius: 4px;
     border: 1.5px solid #9a9a9a;
@@ -46,6 +46,7 @@
    border-radius: 6px;
 }
 .bookmark__item-text{
+    max-width: 100px;
     margin-left: 20px;
     font-size: 14px;
     font-weight: bold;

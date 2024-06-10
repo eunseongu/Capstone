@@ -1,12 +1,15 @@
 import { useState, useEffect, useRef } from "react"
 import './../styles/Map.css';
-import markerImg from './../img/marker.png';
+import markerImg from './../img/3d-map.png';
+import { useTranslation } from "react-i18next";
 
 
 const Mapcustom = ({ value, language, markerLocation, zoom }) => {
   const [map, setMap] = useState(null);
   const ref = useRef();
+  const { t, i18n } = useTranslation();
 
+ const APIKEY='AIzaSyDUzFkPYEmC_-khUwbIA1HjXXhbobh7nZ0';
   useEffect(() => { 
     const loadGoogleMaps = (language) => {
       const existingScript = document.getElementById('googleMapsScript');
@@ -37,7 +40,7 @@ const Mapcustom = ({ value, language, markerLocation, zoom }) => {
 
       marker.setMap(newMap);
       if (zoom !== 15) {
-        const contentString = '<h4>지도 속 식당 이름을 클릭해 정보를 확인해보세요</h4>';
+        const contentString =  `<h4>${t("Map.marker")}</h4>`;
 
         const infoWindow = new window.google.maps.InfoWindow({
           content: contentString,
@@ -45,17 +48,31 @@ const Mapcustom = ({ value, language, markerLocation, zoom }) => {
 
         });
 
+
         infoWindow.open(map, marker);
       }
+
+
     };
 
     window.initMap = initMap;
     loadGoogleMaps(language);
   }, [language, value, markerLocation]);
+  if(zoom===15){
+  console.log(zoom);
 
-  return (
-    <div ref={ref} id="map" className="map"></div>
-  )
+    return (
+    
+      <div ref={ref} className="map__nonClick"></div>
+    )
+  }
+  else if(zoom===23){
+    return (
+    
+      <div ref={ref} className="map"></div>
+    )
+  }
+ 
 }
 
 export default Mapcustom
