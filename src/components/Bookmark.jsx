@@ -18,7 +18,7 @@ const Bookmark = ({ bookmarkedRestaurants, baseURL, handleUnbookmark }) => {
    {language==='en'&&(
                 <img className='bookmark__item-img' src={`${baseURL}${image.image_en}`} alt={`${restaurant.restaurant_name}`} />
               )}
-             {language==='kr'&&(
+             {language==='ko'&&(
                 <img className='bookmark__item-img' src={`${baseURL}${image.image_ko}`} alt={`${restaurant.restaurant_name}`} />
               )}
              {language==='zh'&&(

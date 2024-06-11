@@ -8,7 +8,7 @@ const Mapcustom = ({ value, language, markerLocation, zoom }) => {
   const [map, setMap] = useState(null);
   const ref = useRef();
   const { t, i18n } = useTranslation();
-
+console.log('lan',language);
  const APIKEY='AIzaSyDUzFkPYEmC_-khUwbIA1HjXXhbobh7nZ0';
   useEffect(() => { 
     const loadGoogleMaps = (language) => {

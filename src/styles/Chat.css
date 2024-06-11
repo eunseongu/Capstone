@@ -53,10 +53,10 @@
     justify-content: center;
     align-items: flex-start;
     padding: 18px;
-    background: rgb(231, 247, 255);
+    background: #e2f5ff;
     /* linear-gradient(90deg, rgba(15, 124, 240, 0.937255) 0%, rgba(62, 195, 254, 0.937255) 100%); */
     border-radius: 17px;
-    font-size: 0.97rem;
+    font-size: 0.94rem;
     white-space: pre-wrap;
 }
 
@@ -69,7 +69,7 @@
     padding: 18px;
     background: #efefef;
     border-radius: 17px;
-    font-size: 0.97rem;
+    font-size: 0.94rem;
     white-space: pre-wrap;
 }
 

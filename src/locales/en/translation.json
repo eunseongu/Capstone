@@ -24,7 +24,9 @@
     "logout":"Logout",
     "recommend":"Recommend",
     "user":"Welcome, ",
-    "delete": "Delete All Chat"
+    "delete": "Delete All Chat",
+    "tooltip1":"Bookmark-based restaurant recommendations.",
+    "tooltip2":"Bookmark a restaurant and try refreshing the page!"
 
    },
    "Map":{

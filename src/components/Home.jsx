@@ -44,15 +44,15 @@ export default function Home() {
       <div className="home__images">
         {/* <img src={Image1} alt="Decorative" className="home-left__image1" /> */}
         <img src={Image2} alt="Decorative" className="home-left__image2" />
-        <img src={Image3} alt="Decorative" className="home-left__image3" />
-        <img src={Image4} alt="Decorative" className="home-left__image4" />
-        <img src={Image5} alt="Decorative" className="home-left__image5" />
+        {/* <img src={Image3} alt="Decorative" className="home-left__image3" /> */}
+        {/* <img src={Image4} alt="Decorative" className="home-left__image4" /> */}
+        {/* <img src={Image5} alt="Decorative" className="home-left__image5" /> */}
         <img src={Image6} alt="Decorative" className="home-left__image6" />
       </div>
       <div className='home-right'>
         <div className='home-right__button-container'>
           <button className='home-right__language-button' onClick={() => changeLanguage('en')}>English</button>
-          <button className='home-right__language-button' onClick={() => changeLanguage('kr')}>Korean</button>
+          <button className='home-right__language-button' onClick={() => changeLanguage('ko')}>Korean</button>
           <button className='home-right__language-button' onClick={() => changeLanguage('ja')}>Japanese</button>
           <button className='home-right__language-button' onClick={() => changeLanguage('zh')}>Chinese</button>
         </div>

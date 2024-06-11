@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-const Tooltip = ({ text, children }) => {
+const Tooltip = ({ children }) => {
   const [showTooltip, setShowTooltip] = useState(false);
+  const { t, i18n } = useTranslation();
 
   return (
     <div 
@@ -11,10 +13,12 @@ const Tooltip = ({ text, children }) => {
     >
       {children}
       {showTooltip && (
-        <div 
-          style={{ position: 'absolute', top: '100%', left: 0, backgroundColor: 'rgba(0, 0, 0, 0.7)', color: '#fff', padding: '5px', borderRadius: '5px' }}
+        <div className='recommend__tooltip-text'
+         
         >
-          {text}
+          {t('Chat.tooltip1')}
+          <br></br>
+          {t('Chat.tooltip2')}
         </div>
       )}
     </div>

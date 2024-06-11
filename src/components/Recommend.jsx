@@ -34,7 +34,7 @@ const Recommend = ({ recommendedRestaurants, baseURL, handleBookmark, handleUnbo
             {language==='en'&&(
             <img className='recommend-item__img' src={`${baseURL}${restaurant.resimages[0].image_en}`} alt={`${restaurant.name}`} />
             )}
-             {language==='kr'&&(
+             {language==='ko'&&(
             <img className='recommend-item__img' src={`${baseURL}${restaurant.resimages[0].image_ko}`} alt={`${restaurant.name}`} />
             )}
              {language==='zh'&&(

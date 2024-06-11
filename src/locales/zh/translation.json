@@ -2,7 +2,7 @@
     "Home": {
       "login": "登录",
       "register": "注册",
-    "seongsu":"Korea Seongsu-dong 餐厅推荐 聊天机器人"
+    "seongsu":"韩国 餐厅推荐 聊天机器人"
     },
     "Login": {
       "welcome": "欢迎回来！",
@@ -24,7 +24,9 @@
       "logout": "登出",
       "recommend":"推荐",
       "user":"欢迎回来, ",
-      "delete": "删除所有聊天"
+      "delete": "删除所有聊天",
+      "tooltip1":"基于书签的餐厅推荐。！",
+      "tooltip2":"收藏一家餐厅，然后尝试刷新页面！"
 
     },
     "Map":{

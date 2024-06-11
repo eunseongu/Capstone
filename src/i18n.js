@@ -11,7 +11,7 @@ const resources = {
   en: {
     translation: translationEN,
   },
-  kr: {
+  ko: {
     translation: translationKR,
   },
   ja: {

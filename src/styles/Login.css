@@ -19,9 +19,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(90deg, rgba(15, 124, 240, 0.937255) 0%, rgba(62, 195, 254, 0.937255) 100%);
-  position: relative;
-  overflow: hidden;
+  /* background: linear-gradient(90deg, rgba(15, 124, 240, 0.937255) 0%, rgba(62, 195, 254, 0.937255) 100%); */
+  /* position: relative; */
+  /* overflow: hidden; */
+  background-image: url('./../img/login.png');
+  background-size: cover;
+
+  /* background: rgba(255, 255, 255, 0); 배경 제거 */
 }
 
 .login__images {

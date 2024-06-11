@@ -50,7 +50,7 @@ const MapBookmark = ({ restaurantName, handleBookmark, handleUnbookmark, bookmar
               if (language==='en'){
                 setThumbnailImg(data[0].image_en);
               }
-              else if (language==='kr'){
+              else if (language==='ko'){
                 setThumbnailImg(data[0].image_ko);
               }
               else if (language==='zh'){

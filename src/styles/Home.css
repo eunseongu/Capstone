@@ -19,10 +19,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  background: linear-gradient(90deg, rgba(15, 124, 240, 0.937255) 0%, rgba(62, 195, 254, 0.937255) 100%);
-  position: relative;
-  overflow: hidden;
+  background-image: url('./../img/home.png');
+   background-repeat: no-repeat; /* 이미지를 반복하지 않음 */
+  /* background: linear-gradient(90deg, rgba(15, 124, 240, 0.937255) 0%, rgba(62, 195, 254, 0.937255) 100%); */
+  /* position: relative; */
+  /* overflow: hidden; */
 }
 
 
@@ -51,6 +52,7 @@
   height: 100px;
   display: flex;
   margin-left: 78%;
+  margin-top: 30px;
   flex-direction: row; 
   align-items: center; 
   justify-content: flex-end;
@@ -93,10 +95,10 @@
   font-weight: bold;
   font-size: 22px;
   line-height: 100%;
-  color:  rgb(16, 181, 252);
-  margin-bottom: 120px;
-  margin-top:-20px;
-  margin-left: 380px;
+  color:  #4682B4;
+  margin-bottom: 140px;
+  margin-top:-31px;
+  margin-left: 375px;
 }
 .home-right__korean {
   font-family: "Architype Aubette W90", sans-serif;

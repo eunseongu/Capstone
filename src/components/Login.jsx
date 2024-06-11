@@ -8,6 +8,7 @@ import Image3 from './../img/pizza.png'
 import Image4 from'./../img/cheese.png'
 import Image5 from './../img/cupcake.png'
 import Image6 from './../img/rebot.png'
+import loginImg from './../img/login.png'
 
 export default function Login() {
     const navigate = useNavigate();
@@ -86,11 +87,7 @@ export default function Login() {
     return (
         <div className='login__container'>
             <div className="login__images">
-        {/* <img src={Image1} alt="Decorative" className="login-left__image1" /> */}
-        {/* <img src={Image2} alt="Decorative" className="login-left__image2" /> */}
-        {/* <img src={Image3} alt="Decorative" className="login-left__image3" /> */}
-        {/* <img src={Image4} alt="Decorative" className="login-left__image4" /> */}
-        {/* <img src={Image5} alt="Decorative" className="login-left__image5" /> */}
+        
         <img src={Image6} alt="Decorative" className="login-left__image6" />
       </div>
             <div className='login-right'>

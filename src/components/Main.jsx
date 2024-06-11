@@ -15,8 +15,9 @@ import Bookmark from './Bookmark';
 // import RestaurantCoordinates from './RestaurantCoordinates';
 import { getRestaurantCoordinates } from './GetRestaurantCoordinates';
 import robotImg from './../img/rebot.png';
-import userImg from './../img/user.png';
+import userImg from './../img/u.png';
 import Tooltip from './Tooltip';
+import { restaurants_list } from './restaurant_list';
 
 const Chat = () => {
   const navigate = useNavigate();
@@ -113,7 +114,7 @@ const Chat = () => {
         setUserInfo({ username: data.username, language: data.language });
         localStorage.setItem('userInfo', JSON.stringify({ username: data.username, language: data.language }));
         if (data.language === "Japanese") { i18n.changeLanguage('ja'); }
-        if (data.language === "Korean") { i18n.changeLanguage('kr'); }
+        if (data.language === "Korean") { i18n.changeLanguage('ko'); }
         if (data.language === "Chinese") { i18n.changeLanguage('zh'); }
         if (data.language === "English") { i18n.changeLanguage('en'); }
       })
@@ -199,9 +200,20 @@ const Chat = () => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
+     
       const data = await response.json();
-      setChatHistory(data.chat_history);
+      
+const newMessages = data.chat_history.reduce((acc, chat) => {
+  acc.push(
+    { text: chat.message, isUser: true, id: chat.timestamp },
+    { text: chat.response, isUser: false, id: chat.timestamp }
+  );
+  return acc;
+}, []);
+
+setChatHistory((prevMessages) => [...prevMessages, ...newMessages]);
+      
+
     } catch (error) {
       console.error('Error fetching chat history:', error);
     }
@@ -210,8 +222,12 @@ const Chat = () => {
   useEffect(() => {
     fetchBookmarkedRestaurants();
     fetchRecommendedRestaurants();
+  }, [fetchBookmarkedRestaurants, fetchRecommendedRestaurants]);
+
+  useEffect(() => {
     fetchChatHistory();
-  }, [fetchBookmarkedRestaurants, fetchRecommendedRestaurants, fetchChatHistory]);
+  }, [ fetchChatHistory]);
+
 
 
   const handleDeleteAllChats = async () => {
@@ -235,19 +251,49 @@ const Chat = () => {
     }
   };
 
+  
   const renderChatHistory = () => {
-    return chatHistory.map((chat, index) => (
-      <React.Fragment key={index}>
-        <div className='chat__user-message-container'>
-          <div className='chat__user-message-box'>{chat.message}</div>
-          <img className='chat__user-icon' src={userImg} alt="User" />
-        </div>
-        <div className='chat__bot-message-container'>
-          <img className='chat__bot-icon' src={robotImg} alt="Bot" />
-          <div className='chat__bot-message-box'>{chat.response}</div>
-        </div>
-      </React.Fragment>
-    ));
+    const highlightRestaurants = (isUser, text) => {
+      const pattern = new RegExp(`(${restaurants_list.join('|')})`, 'gi');
+      const found = [];
+
+
+      const highlightedText = text.split(pattern).map((part, index) => {
+          if (!isUser && restaurants_list.includes(part)) {
+              found.push(part);
+
+              return (
+                  <span key={index} style={{ color: '#2845ed', cursor: 'pointer' }} onClick={() => handleRestaurantClick(part)}>
+                      {part}
+                  </span>
+              );
+          }
+          return part;
+      });
+
+      return { highlightedText, found };
+  };
+
+    return  (   chatHistory.map((message) => {
+                const { highlightedText } = highlightRestaurants(message.isUser, message.text);
+                
+                return (
+                    <div key={message.id} className={message.isUser ? 'chat__user-message-container' : 'chat__bot-message-container'}>
+                        {!message.isUser && (
+                            <img className='chat__bot-icon' src={robotImg} alt="Bot" />
+                        )}
+
+                        <div className={message.isUser ? 'chat__user-message-box' : 'chat__bot-message-box'}>
+                            <span >{highlightedText}</span>
+                        </div>
+
+                        {message.isUser && (
+                            <img className='chat__user-icon' src={userImg} alt="User" />
+                        )}
+                    </div>
+                );
+            })
+          );
   };
 
 
@@ -332,9 +378,9 @@ const Chat = () => {
                     fetchRecommendedRestaurants();
                   }
                 }}>
-                </button>
-                <Tooltip text="This is a tooltip">
-        <button>?</button>
+                </button >
+                <Tooltip >
+        <button className='recommend__tooltip-button'>?</button>
       </Tooltip>
               </div>
             </div>
