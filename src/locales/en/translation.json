@@ -25,15 +25,18 @@
     "recommend":"Recommend",
     "user":"Welcome, ",
     "delete": "Delete All Chat",
-    "tooltip1":"Bookmark-based restaurant recommendations.",
-    "tooltip2":"Bookmark a restaurant and try refreshing the page!"
+    "tooltip2":"Bookmark-based restaurant recommendations.",
+    "tooltip1":"Bookmark a restaurant and click the refresh button!"
 
    },
    "Map":{
     "thumbnail":"View Thumbnail",
     "closethumbnail":"Close Thumbnail",
-    "search": "Search for the restaurant location",
-    "marker":"Click on the restaurant name on the map to view the information"
+    "search": "Search for the restaurant",
+    "marker":"Click on the restaurant name on the map to view the information",
+"naverlocation1":"Click on the link",
+"naverlocation2":"to check the information on Naver Maps"
+
    },
    "Category":{
 "감자탕":"Gamjatang",

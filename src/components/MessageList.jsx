@@ -1,11 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
 import robotImg from './../img/bot-img.png';
-import userImg from './../img/u.png';
+import userImg from './../img/user3D.png';
 import { restaurants_list } from './restaurant_list';
 import './../styles/Chat.css';
+import { useTranslation } from 'react-i18next';
 
-export const MessageList = ({ handleDeleteAllChats,renderChatHistory,messages, onRestaurantClick }) => {
+export const MessageList = ({ 
+    handleDeleteAllChats,
+    renderChatHistory,
+    messages, 
+    onRestaurantClick,
+    chatHistory }) => {
     const messagesEndRef = useRef(null);
+    const { t, i18n } = useTranslation();
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -39,8 +46,13 @@ export const MessageList = ({ handleDeleteAllChats,renderChatHistory,messages, o
 
     return (
         <div className='chat__messages-container'>
-            <button className='chat__delete-button' onClick={handleDeleteAllChats}>Delete All Chat</button>
-            {renderChatHistory()}
+
+{messages.length !== 0 && chatHistory.length !== 0  && (
+        
+            <button className='chat__delete-button' onClick={handleDeleteAllChats}>{t('Chat.delete')}</button>
+            
+      )}
+      {renderChatHistory()}
 
             {messages.map((message) => {
                 const { highlightedText } = highlightRestaurants(message.isUser, message.text);

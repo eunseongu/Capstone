@@ -6,7 +6,7 @@
     overflow-y: auto;
     width: 98%;
     margin-left: 13px;
-    /* background-color: red; */
+    /* background-color: white; */
 }
 
 .chat__bot-message-container {
@@ -33,16 +33,16 @@
 }
 
 .chat__bot-icon {
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     margin: 3px 16px 0px 10px;
     transform: scaleX(-1);
 
 }
 
 .chat__user-icon {
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     margin: 6px 21px 0px 10px;
 }
 
@@ -80,7 +80,7 @@
     border: 1px solid #ccc;
     border-radius: 25px;
     padding: 5px;
-    margin-left: 28px;
+    margin-left:11px;
     margin-top:15px
     /* background-color: pink; */
 }
@@ -126,15 +126,32 @@ input:focus {
     border: none;
 }
 
-.chat__delete-button{
+
+
+.chat__delete-button {
     width: 100px;
-    background-color: black;
+margin-left: 12px;
+    background-color:#0eb2ff;
     color: white;
     border: none;
     border-radius: 5px;
     /* margin-right: 10px; */
-    margin-left: 20px;
+    margin-top: 12px; /* 버튼의 위쪽 여백 추가 */
     cursor: pointer;
     padding: 5px;
-}
+  }
 
+.no_history_image {
+    width: 300px;
+    height: 300px;
+    margin: auto; /* 이미지가 수평으로 가운데에 오도록 설정 */
+    opacity: 1;
+  }
+  
+  .chat__no-messages {
+    display: flex;
+    flex-direction: column; /* 이미지와 버튼을 세로로 배치 */
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* 컨테이너의 높이를 100%로 설정 */
+  }

@@ -7,7 +7,7 @@
 width: 99%;
 overflow: auto;
 height: 560px;
-background-color: white;
+/* background-color: black; */
 border-radius: 9px;
 }
 
@@ -16,23 +16,48 @@ border-radius: 9px;
   /* transform: translateY(20px); */
   /* transition: opacity 0.5s ease, transform 0.5s ease; */
   display: flex;
+  background-color: rgba(65, 175, 249, 0.2);
+width: 100%;
+border-radius: 12px;
+margin-top: 3px;
+margin-bottom: 20px;
   align-items: center;
-  margin-left: 10px;
+  /* margin-left: 5px; */
+   flex-wrap: wrap;
+   
+}
+
+
+.recommend-item__img-text-icon{
+  flex-wrap: nowrap;
+  display: flex;
+  
+width: 100%;
+
+  align-items: center;
+  /* margin-left: 5px; */
+   /* flex-wrap: wrap; */
+
 }
 
 
 .recommend-item__img {
+  margin-top: 10px;
+  margin-left: 10px;
   margin-right: 20px;
+  margin-bottom: 10px;
   border-radius: 12px;
-  margin-top: 20px;
-  width: 170px;
-  height: 170px;
+  /* margin-top: 20px; */
+  width: 130px;
+  height: 130px;
   z-index: 2;
 }
 
 .recommend-item__img:hover {
   height: 100%;
   width: 100%;
+  z-index: 1; 
+  margin:0 0 10px 0px;
 }
 
 
@@ -40,11 +65,12 @@ border-radius: 9px;
 .recommend-item__text {
   margin: 0;
   margin-right: 10px;
-  font-size: 12.9px;
+  font-size: 14px;
   font-family: 'Poppins';
   font-style: normal;
   font-weight: bold;
-  max-width: 80px;
+  z-index: 2;
+  /* max-width: 80px; */
 }
 
 .recommend-item__list {
@@ -52,13 +78,14 @@ border-radius: 9px;
 }
 
 .heart-icon {
-  width: 25px;
-  height: 25px;
+  width: 21px;
+  height: 21px;
   cursor: pointer;
   margin-left: auto;
   margin-right: 15px;
   z-index: 1;
   position: relative;
+  /* margin-top: 45px; */
   /* margin-bottom: 120px; */
 }
 
@@ -71,16 +98,16 @@ border-radius: 9px;
   margin-left: 8px;
 }
 .recommend-item__icon-container {
-  background-color: rgb(211, 211, 211);
+  background-color: rgba(65, 175, 249, 0.3); /* Background color */
   display: inline-flex; /* inline-flex로 변경 */
   border-radius: 8px;
   align-items: center;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   min-width: 50px; /* 최소 너비 설정 */
   padding: 4px 10px; /* 내부 여백 추가 */
   box-sizing: border-box; /* 패딩 포함한 박스 크기 계산 */
   margin-right: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   margin-left: 10px;
   
 }
@@ -95,3 +122,12 @@ border-radius: 9px;
     /* margin-right: 10px; */
   }
 
+  .recommend-item__text-box{
+    /* background-color: red; */
+    flex: 1;
+  }
+
+
+.recommned-item__icon-all-container{
+  flex-wrap: nowrap;
+}

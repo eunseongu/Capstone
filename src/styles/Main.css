@@ -23,9 +23,12 @@ body {
     display: flex;
     flex-direction: column;
     -ms-overflow-style: none;
+    /* background:linear-gradient(90deg, rgba(90, 159, 233, 0.937) 0%, rgba(62, 195, 254, 0.937255) 100%); */
+
+    
 }
 ::-webkit-scrollbar {
-    width: 8px; /* 스크롤바 너비 */
+    width: 7.2px; /* 스크롤바 너비 */
     height: 0px; /* 수평 스크롤바의 경우 사용 */
 }
 ::-webkit-scrollbar-thumb {
@@ -34,18 +37,43 @@ body {
 }
 
 
-.main__container {
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* .main__container는 페이지 높이의 85%를 차지합니다. */
+  .main__container {
+    height: 90%;
     display: flex;
     flex-direction: row;
-    height: 100vh;
-}
+  }
+  
+  .top__container {
+    display: flex;
+    /* justify-content: center; 모든 자식을 중앙에 배치 */
+    align-items: center; /* 수직 가운데 정렬 */
+    height: 10%; /* 높이 15% */
+    position: relative; /* 상대 위치를 기준으로 자식 위치 설정 */
+    padding: 0 20px; /* 좌우 여백 추가, 필요에 따라 조정 */
+    background:linear-gradient(90deg,  rgba(62, 195, 254, 0.937255)0%,  rgba(90, 159, 233, 0.937)100%);
 
-header {
-    /* border-bottom: 1.5px solid #ccc; */
-    background: linear-gradient(90deg, #FFFFFF 43%, #f74b4b 70%, #0059ab 90%);
-    width: 100vw;
-    height: 100px;
-}
+  }
+  
+  .name_k-rebot {
+    display: flex;
+    justify-content: center;
+    font-family: "Architype Aubette W90", sans-serif;
+    /* font-weight: bold; */
+    font-size: 65px;
+    line-height: 100%;
+    color: yellow;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
 
 .recommend {
     width: 25%;
@@ -53,19 +81,27 @@ header {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    background:linear-gradient(90deg, rgba(15, 124, 240, 0.937255) 0%, rgba(62, 195, 254, 0.937255) 100%);
+    
+    /* background:linear-gradient(90deg, rgba(15, 124, 240, 0.937255) 0%, rgba(62, 195, 254, 0.937255) 100%); */
 }
 
+
 .recommend__container {
-    height: 84%;
+    /* height: 89%; */
     width: 90%;
     border-radius: 7px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: white;
+/* border:1.5px solid gray; */
+/* border-radius: 0px 0px 30px 30px; */
+
+
 }
 
 .recommend__button-container {
+    
     width: 350px;
     height: 43px;
     display: inline-block;
@@ -78,7 +114,14 @@ header {
 .chat {
     width: 55%;
     display: flex;
+    height: 650px;
     flex-direction: column;
+    /* background-color: white; */
+    /* border: 1.5px solid gray; */
+    /* background-color:#0eb2ff; */
+    border-radius: 50px;
+    margin-top: 26px;
+    
 }
 
 
@@ -87,7 +130,11 @@ header {
     flex-direction: row;
     text-align: center;
     align-content: center;
-    margin-top: -10px;
+    /* margin-top: -10px; */
+    margin-left: 65px;
+    white-space: nowrap;
+
+
 }
 .header__k-rebot-img {
     background-image: url('./../img/rebot.png');
@@ -101,60 +148,86 @@ header {
   font-family: "Architype Aubette W90", sans-serif;
 
     /* font-weight: bold; */
-    margin-left: 15px;
     font-size: 37px;
     line-height: 100%;
     color: yellow;
 }
 
 .header__text-box02 {
-    display: inline-block;
-    text-align: center;
-    margin: -10px 0 35px 35%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /* text-align: center; */
+    /* margin: -10px 0 35px 35%; */
     /* background-color: red; */
+    /* margin-left: %; */
+
 }
 
 .header__text-box03 {
-    display: inline-block;
-    text-align: center;
+    display: flex;
+    /* text-align: center; */
     /* background-color: red; */
-    margin: 20px 0 45px 0;
+    /* margin: 20px 0 45px 0; */
+    margin-left: 50%;
+    margin-right: 10%;
+    white-space: nowrap;
 }
 
 .header__logout {
-    font-size: 18px;
-    color: black;
+    font-size: 15px;
+    margin-right: 40px;
+    color: white;
     font-weight: 500;
 }
 
 .header__welcome {
-    font-size: 16px;
-    color: black;
+    font-size: 15px;
+    color: white;
     font-weight: 500;
 }
 
-.recommend__map-button {
-    background-color: transparent;
-    border: none;
-    margin:10px;
-    padding: 0 10px;
-    cursor: pointer;
-    position: relative;
-    color: white;
-    font-size: 14px;
-}
+.recommend__three-button {
+    /* margin-top:20px; */
+    margin-left: 2%;
+    /* margin-right: 10px; */
 
-.recommend__recommend-button {
-    background-color: transparent;
-    cursor: pointer;
+    /* padding: 0; */
+    width: 90%;
+    height: 4.1%;
+  }
+
+.recommend__map-button {
     border: none;
-    margin-right: 10px;
-    margin-top: 10px;
-    padding: 0 5px;
+    cursor: pointer;
     position: relative;
     color: white;
-    font-size: 14px;
-}
+    font-size: 13px;
+    background-color: #0eb2ff;
+    border-radius: 30px 30px 0 0;
+    width: 49%;
+    /* height: px; */
+  
+    border-bottom: none;
+    height: 100%;
+  }
+  
+  .recommend__recommend-button {
+    border: none;
+    cursor: pointer;
+    position: relative;
+    color: white;
+    font-size: 13px;
+    background-color: #0eb2ff;
+    border-radius: 30px 30px 0 0;
+    width: 49%;
+    /* height: 30px; */
+    height: 100%;
+  
+    border-bottom: none;
+  }
+
+
 
 .recommend__reload-button {
     background: none;
@@ -169,10 +242,11 @@ header {
 
 }
 
-.recommend__map-button::after {
-    content: "|";
-    position: absolute;
-    right: -5px;
+.recommend__map-button.active,
+.recommend__recommend-button.active,
+.recommend__bookmark-button.active {
+  background-color: #007bbf; /* 활성화된 버튼의 배경색 */
+  border-color: #007bbf; /* 활성화된 버튼의 테두리 색 */
 }
 
 .recommend__error-message {
@@ -190,25 +264,24 @@ header {
     border-radius: 10px;
     padding: 5px;
     background-color: #fff;
-    margin: 3px;
-}
-
-.recommend__input {
+    margin: 1.6px;
+  }
+  
+  .recommend__input {
     flex-grow: 1;
     border: none;
     padding: 0 0 0 20px;
     font-size: 14.5px;
     border-radius: 15px;
     outline: none;
-}
-
-.recommend__input_button {
+  }
+  
+  .recommend__input_button {
     background: none;
     border: none;
     cursor: pointer;
     margin-right: 7px;
     padding: 3px;
-    margin-left: auto;
     width: 20px;
     height: 20px;
     background-image: url('./../img/search.png');
@@ -216,7 +289,23 @@ header {
     background-repeat: no-repeat;
     background-position: center;
     outline: none;
-}
+  }
+  
+  .recommend__reload-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background-image: url('./../img/refresh-arrow.png');
+    background-size: cover;
+    background-position: center;
+    margin-right: 7px;
+    margin-left: 7px;
+    outline: none;
+    filter: invert(100%); 
+    transform: scaleX(-1);
+  }
 
 
 
@@ -226,10 +315,12 @@ header {
     color: #fff;
     border: none;
     border-radius: 50%; /* 동그란 모양 */
-    padding: 0px 0 0 5;
+    padding: 0px 0 0 1;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 12.3px;
+    margin-right: -30px;
     margin-left: 20px;
+
     /* transition: background-color 0.3s, color 0.3s; */
   }
   
@@ -251,5 +342,84 @@ header {
     border-radius: 5px;
     z-index: 1;
     font-size: 14px;
+  }
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup-inner {
+    position: fixed;
+    background-image: url('./../img/popup.png');
+    padding: 20px;
+    border-radius: 10px;
+    width: 95%; /* 최대 너비 설정 */
+    height: 90%; /* 최대 높이 설정 */
+    align-items: center;
+  justify-content: center;
+  background-size: cover; 
+     background-repeat: no-repeat;
+  margin-bottom: 30px;
+  }
+  .popup-inner-en {
+    position: fixed;
+    background-image: url('./../img/popup_en.png');
+    padding: 20px;
+    border-radius: 10px;
+    width: 95%; /* 최대 너비 설정 */
+    height: 90%; /* 최대 높이 설정 */
+    align-items: center;
+  justify-content: center;
+  background-size: cover; 
+     background-repeat: no-repeat;
+  margin-bottom: 30px;
+  }
+  .popup-inner-ja {
+    position: fixed;
+    background-image: url('./../img/popup_ja.png');
+    padding: 20px;
+    border-radius: 10px;
+    width: 95%; /* 최대 너비 설정 */
+    height: 90%; /* 최대 높이 설정 */
+    align-items: center;
+  justify-content: center;
+  background-size: cover; 
+     background-repeat: no-repeat;
+  margin-bottom: 30px;
+  }
+  .popup-inner-zh {
+    position: fixed;
+    background-image: url('./../img/popup_zh.png');
+    padding: 20px;
+    border-radius: 10px;
+    width: 95%; /* 최대 너비 설정 */
+    height: 90%; /* 최대 높이 설정 */
+    align-items: center;
+  justify-content: center;
+  background-size: cover; 
+     background-repeat: no-repeat;
+  margin-bottom: 30px;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+  }
+  
+  .close-btn:focus {
+    outline: none;
   }
   

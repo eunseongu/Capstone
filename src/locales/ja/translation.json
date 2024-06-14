@@ -30,9 +30,12 @@
     },
     "Map":{
       "thumbnail":"サムネイルを表示する",
-    "closethumbnail":"サムネイルを閉じる",
+    "closethumbnail":"サムネイルを閉じる",  
     "search":"レストランの場所を検索してください",
-    "marker":"地図の中のレストラン名をクリックして情報を確認してください"
+    "marker":"地図の中のレストラン名をクリックして情報を確認してください",
+"naverlocation1":"リンクをクリックして",
+"naverlocation2":"Naverマップで情報を確認してください"
+
 
      },
      "Category":{

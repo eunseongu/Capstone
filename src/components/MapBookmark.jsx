@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './../styles/MapBookmark.css';
 import { useTranslation } from 'react-i18next';
-import bookmark from './../img/bookmark.png';
+import bookmark from './../img/bookmark_yellow.png';
 import unbookmark from './../img/unbookmark.png';
 
 const MapBookmark = ({ restaurantName, handleBookmark, handleUnbookmark, bookmarkedRestaurants }) => {

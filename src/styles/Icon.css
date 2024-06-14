@@ -1,0 +1,22 @@
+.icon-slider {
+  height: 40px; /* 이미지 높이 설정 */
+  width: 40px; /* 이미지 너비 설정 */
+  overflow: hidden; /* 넘어가는 이미지 숨기기 */
+  margin-top: 30px;
+  transform: translate(-50%, -50%); /* 중앙 정렬 */
+}
+
+.icon-slider img {
+  width: 100%; /* 이미지 너비 설정 */
+  height: 100%; /* 이미지 높이 설정 */
+  object-fit: contain; /* 이미지가 자르지 않고 비율 유지하며 채움 */
+  transition: transform 0.5s ease-in-out; /* 변환 애니메이션 설정 */
+  transform: translateY(150%); /* 비활성 이미지는 아래로 이동 */
+  position: absolute; /* 절대 위치 설정 */
+  left: 0;
+  bottom: 0;
+}
+
+.icon-slider img.active {
+  transform: translateY(0%); /* 활성 이미지는 위로 이동 */
+}

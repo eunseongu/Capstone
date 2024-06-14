@@ -33,7 +33,10 @@
       "thumbnail":"缩略图预览",
       "closethumbnail":"关闭缩略图",
       "search":"请搜索餐厅位置",
-    "marker":"点击地图上的餐厅名称查看信息"
+    "marker":"点击地图上的餐厅名称查看信息",
+"naverlocation1":"点击链接",
+"naverlocation2":"在Naver地图上查看信息"
+
 
 
      },

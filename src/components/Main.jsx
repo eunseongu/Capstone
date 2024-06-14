@@ -1,4 +1,3 @@
-// src/Chat.js
 import './../styles/Main.css';
 import './../styles/Bookmark.css';
 import './../styles/Chat.css';
@@ -14,12 +13,50 @@ import Recommend from './Recommend';
 import Bookmark from './Bookmark';
 // import RestaurantCoordinates from './RestaurantCoordinates';
 import { getRestaurantCoordinates } from './GetRestaurantCoordinates';
-import robotImg from './../img/rebot.png';
-import userImg from './../img/u.png';
+import robotImg from './../img/bot-img.png';
+import userImg from './../img/user3D.png';
 import Tooltip from './Tooltip';
 import { restaurants_list } from './restaurant_list';
+import IconSlider from './IconSlider';
 
+function Popup({ onClose }) {
+  const { t, i18n } = useTranslation();
+  const language=localStorage.getItem('i18nextLng');
+  return (
+    <div className="popup">
+      {language=='ko'&& (
+        <div className="popup-inner">
+        <button className="close-btn" onClick={onClose}>
+          X
+        </button>
+      </div>)}
+      {language=='en'&& (
+        <div className="popup-inner-en">
+        <button className="close-btn" onClick={onClose}>
+          X
+        </button>
+      </div>)}
+      {language=='ja'&& (
+        <div className="popup-inner-ja">
+        <button className="close-btn" onClick={onClose}>
+          X
+        </button>
+      </div>)}
+      {language=='zh'&& (
+        <div className="popup-inner-zh">
+        <button className="close-btn" onClick={onClose}>
+          X
+        </button>
+      </div>)}
+    </div>
+  );
+}
 const Chat = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(true);
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+  };
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const { username } = useParams();
@@ -200,19 +237,19 @@ const Chat = () => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-     
-      const data = await response.json();
-      
-const newMessages = data.chat_history.reduce((acc, chat) => {
-  acc.push(
-    { text: chat.message, isUser: true, id: chat.timestamp },
-    { text: chat.response, isUser: false, id: chat.timestamp }
-  );
-  return acc;
-}, []);
 
-setChatHistory((prevMessages) => [...prevMessages, ...newMessages]);
-      
+      const data = await response.json();
+
+      const newMessages = data.chat_history.reduce((acc, chat) => {
+        acc.push(
+          { text: chat.message, isUser: true, id: chat.timestamp },
+          { text: chat.response, isUser: false, id: chat.timestamp }
+        );
+        return acc;
+      }, []);
+      setChatHistory([]);
+      setChatHistory((prevMessages) => [...prevMessages, ...newMessages]);
+
 
     } catch (error) {
       console.error('Error fetching chat history:', error);
@@ -226,7 +263,7 @@ setChatHistory((prevMessages) => [...prevMessages, ...newMessages]);
 
   useEffect(() => {
     fetchChatHistory();
-  }, [ fetchChatHistory]);
+  }, [fetchChatHistory]);
 
 
 
@@ -251,7 +288,7 @@ setChatHistory((prevMessages) => [...prevMessages, ...newMessages]);
     }
   };
 
-  
+
   const renderChatHistory = () => {
     const highlightRestaurants = (isUser, text) => {
       const pattern = new RegExp(`(${restaurants_list.join('|')})`, 'gi');
@@ -259,41 +296,41 @@ setChatHistory((prevMessages) => [...prevMessages, ...newMessages]);
 
 
       const highlightedText = text.split(pattern).map((part, index) => {
-          if (!isUser && restaurants_list.includes(part)) {
-              found.push(part);
+        if (!isUser && restaurants_list.includes(part)) {
+          found.push(part);
 
-              return (
-                  <span key={index} style={{ color: '#2845ed', cursor: 'pointer' }} onClick={() => handleRestaurantClick(part)}>
-                      {part}
-                  </span>
-              );
-          }
-          return part;
+          return (
+            <span key={index} style={{ color: '#2845ed', cursor: 'pointer' }} onClick={() => handleRestaurantClick(part)}>
+              {part}
+            </span>
+          );
+        }
+        return part;
       });
 
       return { highlightedText, found };
-  };
+    };
 
-    return  (   chatHistory.map((message) => {
-                const { highlightedText } = highlightRestaurants(message.isUser, message.text);
-                
-                return (
-                    <div key={message.id} className={message.isUser ? 'chat__user-message-container' : 'chat__bot-message-container'}>
-                        {!message.isUser && (
-                            <img className='chat__bot-icon' src={robotImg} alt="Bot" />
-                        )}
+    return (chatHistory.map((message) => {
+      const { highlightedText } = highlightRestaurants(message.isUser, message.text);
 
-                        <div className={message.isUser ? 'chat__user-message-box' : 'chat__bot-message-box'}>
-                            <span >{highlightedText}</span>
-                        </div>
+      return (
+        <div key={message.id} className={message.isUser ? 'chat__user-message-container' : 'chat__bot-message-container'}>
+          {!message.isUser && (
+            <img className='chat__bot-icon' src={robotImg} alt="Bot" />
+          )}
 
-                        {message.isUser && (
-                            <img className='chat__user-icon' src={userImg} alt="User" />
-                        )}
-                    </div>
-                );
-            })
-          );
+          <div className={message.isUser ? 'chat__user-message-box' : 'chat__bot-message-box'}>
+            <span >{highlightedText}</span>
+          </div>
+
+          {message.isUser && (
+            <img className='chat__user-icon' src={userImg} alt="User" />
+          )}
+        </div>
+      );
+    })
+    );
   };
 
 
@@ -357,107 +394,137 @@ setChatHistory((prevMessages) => [...prevMessages, ...newMessages]);
 
   return (
     <>
-
-
-      <div className='main__container'>
-
-        <aside className='recommend'>
+      {isPopupOpen && <Popup onClose={closePopup} />}
+      <div className="container">
+        <div className="top__container">
           <div className='header__text-box' onClick={logoOnClick}>
             <p className='header__k-rebot'>K-REBOT</p>
             <img className='header__k-rebot-img' src={robotImg}></img>
           </div>
-          <div className='recommend__container'>
-            <div className='recommend__button-container'>
-              <div>
-                <button className='recommend__map-button' onClick={() => setSelectedOption('map')}>{t('Chat.map')}</button>
-                <button className='recommend__recommend-button' onClick={() => { handleRankingButtonClick(); }}>{t('Chat.recommend')}</button>
-                <button className='recommend__reload-button' onClick={() => {
-                  if (selectedOption === 'map') {
-                    resetMap();
-                  } else if (selectedOption === 'recommend') {
-                    fetchRecommendedRestaurants();
-                  }
-                }}>
-                </button >
-                <Tooltip >
-        <button className='recommend__tooltip-button'>?</button>
-      </Tooltip>
-              </div>
-            </div>
-            <form onSubmit={handleRestaurantSearch}>
-              <div className='recommend__input-box'>
-                <input
-                  type="text"
-                  className='recommend__input'
-                  value={name}
-                  placeholder={t('Map.search')}
-                  onChange={(e) => setName(e.target.value)}
-                />
-                <button type="submit" className='recommend__input_button'></button>
-              </div>
-              {errorMessage && <p className='recommend__error-message'>{errorMessage}</p>}
-
-            </form>
-            <div className='recommend__map-recommend-container'>
-              {selectedOption === 'map' &&
-                <Wrapper render={render}>
-
-                  <Mapcustom
-                    markerLocation={selectedLocation}
-                    language={localStorage.getItem('i18nextLng')}
-                    zoom={zoom}
-                  />
-                  {selectedRestaurant &&
-                    <MapBookmark
-                      restaurantName={selectedRestaurant}
-                      handleBookmark={handleBookmark}
-                      handleUnbookmark={handleUnbookmark}
-                      bookmarkedRestaurants={bookmarkedRestaurants}
-                    />}
-                </Wrapper>
-              }
-              {selectedOption === 'recommend' &&
-
-                <Recommend
-                  recommendedRestaurants={recommendedRestaurants}
-                  baseURL={baseURL}
-                  handleBookmark={handleBookmark}
-                  handleUnbookmark={handleUnbookmark}
-                  fetchBookmarkedRestaurants={fetchBookmarkedRestaurants}
-                  bookmarkedRestaurants={bookmarkedRestaurants}
-                />
-              }
-            </div>
-          </div>
-        </aside>
-
-        <main className='chat'>
           <div className='header__text-box03'>
             <p className='header__welcome font'>{t('Chat.user')} {userInfo.username}!</p>
+
+          </div>
+          <div className='header__text-box02'>
+            <p className='header__logout' onClick={onLogoutHandler}>{t('Chat.logout')}</p>
+            <IconSlider />
+
           </div>
 
-          <MessageList
-            messages={messages}
-            onRestaurantClick={handleRestaurantClick}
-            renderChatHistory={renderChatHistory}
-            handleDeleteAllChats={handleDeleteAllChats}
-          />
-          <MessageForm
-            onSendMessage_user={handleSendMessage_user}
-            onSendMessage_bot={handleSendMessage_bot}
-            userinfo={userInfo}
-          />
-        </main>
-        <aside className='bookmark'>
-          <div className='header__text-box02'>
-            <p className='header__logout font' onClick={onLogoutHandler}>{t('Chat.logout')}</p>
-          </div>
-          <div className='bookmark__text-box'>
-            <p className='bookmark__text font'>{t('Chat.bookmark')}</p>
-          </div>
-          <Bookmark bookmarkedRestaurants={bookmarkedRestaurants} baseURL={baseURL} handleBookmark={handleBookmark} handleUnbookmark={handleUnbookmark} />
-        </aside>
+        </div>
+
+        <div className='main__container'>
+
+          <aside className='recommend'>
+            <div className="recommend__three-button">
+              <button
+                className={`recommend__map-button ${selectedOption === "map" ? "active" : ""
+                  }`}
+                onClick={() => setSelectedOption('map')}
+              >
+                {t("Chat.map")}
+              </button>
+              <button
+                className={`recommend__recommend-button ${selectedOption === "recommend" ? "active" : ""
+                  }`}
+                onClick={() => { handleRankingButtonClick(); }}
+              >
+                {t("Chat.recommend")}
+                <Tooltip >
+                  <button className='recommend__tooltip-button'>?</button>
+                </Tooltip>
+              </button>
+
+            </div>
+
+            <div className='recommend__container'>
+              <div className="searchandbutton">
+
+                <form onSubmit={handleRestaurantSearch}>
+
+                  <div className='recommend__input-box'>
+                    <button className='recommend__reload-button'
+                    type="button"
+                     onClick={() => {
+                      if (selectedOption === 'map') {
+                        resetMap();
+                      } else if (selectedOption === 'recommend') {
+                        fetchRecommendedRestaurants();
+                      }
+                    }}>
+                    </button>
+                    <input
+                      type="text"
+                      className='recommend__input'
+                      value={name}
+                      placeholder={t('Map.search')}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                    <button type="submit" className='recommend__input_button'></button>
+                  </div>
+                  {errorMessage && <p className='recommend__error-message'>{errorMessage}</p>}
+
+                </form>
+              </div>
+              <div className='recommend__map-recommend-container'>
+                {selectedOption === 'map' &&
+                  <Wrapper render={render}>
+
+                    <Mapcustom
+                      markerLocation={selectedLocation}
+                      language={localStorage.getItem('i18nextLng')}
+                      zoom={zoom}
+                    />
+                    {selectedRestaurant &&
+                      <MapBookmark
+                        restaurantName={selectedRestaurant}
+                        handleBookmark={handleBookmark}
+                        handleUnbookmark={handleUnbookmark}
+                        bookmarkedRestaurants={bookmarkedRestaurants}
+                      />}
+                  </Wrapper>
+                }
+                {selectedOption === 'recommend' &&
+
+                  <Recommend
+                    recommendedRestaurants={recommendedRestaurants}
+                    baseURL={baseURL}
+                    handleBookmark={handleBookmark}
+                    handleUnbookmark={handleUnbookmark}
+                    fetchBookmarkedRestaurants={fetchBookmarkedRestaurants}
+                    bookmarkedRestaurants={bookmarkedRestaurants}
+                  />
+                }
+              </div>
+            </div>
+          </aside>
+
+          <main className='chat'>
+
+
+            <MessageList
+              messages={messages}
+              onRestaurantClick={handleRestaurantClick}
+              renderChatHistory={renderChatHistory}
+              handleDeleteAllChats={handleDeleteAllChats}
+              chatHistory={chatHistory}
+            />
+            <MessageForm
+              onSendMessage_user={handleSendMessage_user}
+              onSendMessage_bot={handleSendMessage_bot}
+              userinfo={userInfo}
+            />
+          </main>
+          <aside className='bookmark'>
+
+            <div className='bookmark__text-box'>
+              <p className='bookmark__text font'>{t('Chat.bookmark')}</p>
+            </div>
+            <Bookmark bookmarkedRestaurants={bookmarkedRestaurants} baseURL={baseURL} handleBookmark={handleBookmark} handleUnbookmark={handleUnbookmark} />
+          </aside>
+        </div>
       </div>
+
     </>
   );
 };
